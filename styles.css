@@ -1,16 +1,14 @@
-/* General Body and Typography Styles */
 body, html {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Modern and clean font */
-  background-color: #f7f7f7;
-  color: #333;
-  font-size: 16px; /* Standard readable font size */
-  line-height: 1.6; /* Adequate line spacing for readability */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #1e1e1e;
+  color: #c7c7c7;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-/* Header Styles */
 header {
   width: 100%;
   color: #ffffff;
@@ -18,7 +16,7 @@ header {
 }
 
 #title {
-  background-color: #004a87; /* Slightly darker shade for better contrast */
+  background-color: #252526;
   padding: 70px 0;
   position: relative;
   width: 100%;
@@ -26,16 +24,15 @@ header {
   z-index: 100;
 }
 
-/* Navigation Styles */
 nav {
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  background-color: #004a87; /* Ensure same color for continuity */
-  z-index: 101; /* Higher z-index to stay on top */
+  background-color: #333333;
+  z-index: 101;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 10px 0; /* Padding for aesthetic spacing */
+  padding: 10px 0;
 }
 
 nav ul {
@@ -52,71 +49,67 @@ nav ul li {
 }
 
 nav ul li a {
-  color: white;
+  color: #c7c7c7;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #FFD700; /* Gold color for hover effect */
+  color: #FFD700;
 }
 
-/* Main Content Styles */
-
 main {
-  padding-top: 10px; /* Adjusted for better spacing under fixed header */
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%; /* Ensures alignment center */
+  width: 100%;
 }
 
 section {
-  background-color: #ffffff;
+  background-color: #2d2d2d;
   padding: 25px;
   margin: 20px;
-  width: 85%; /* Optimized for better readability */
+  width: 85%;
   max-width: 960px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px; /* Slightly rounded for a modern look */
-  text-align: center; /* Centers text */
-  align-items: center; /* Aligns other elements like forms and buttons */
+  border-radius: 10px;
+  text-align: center;
+  align-items: center;
+  color: #c7c7c7;
 }
 
-/* Interactive Demo Styles */
 .interactiveDemo {
-  border: 2px solid #cccccc; /* Solid border for clearer boundary */
+  border: 2px solid #555555;
   padding: 20px;
   margin-top: 20px;
-  background-color: #fafafa; /* Slightly off-white for lower contrast */
+  background-color: #1e1e1e;
   display: flex;
-  justify-content: center; /* Ensures content within is centered */
+  justify-content: center;
   align-items: center;
 }
 
-/* Footer Styles */
 footer {
   padding: 12px 0;
-  background-color: #333333;
-  color: #ffffff;
+  background-color: #252526;
+  color: #c7c7c7;
   text-align: center;
   width: 100%;
   position: relative;
   bottom: 0;
 }
 
-/* Responsive Design Improvements */
 @media (max-width: 768px) {
   nav ul {
       flex-direction: column;
   }
 
   nav ul li {
-      margin: 10px 0; /* Adjusted for vertical layout on mobile */
+      margin: 10px 0;
   }
 
   section {
       margin: 10px;
-      width: 95%; /* Wider sections on smaller screens */
+      width: 95%;
   }
 }
