@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exploring Computer Vision</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+</head>
+<body>
+<header>
+    <div id="title">
+        <h1>Introduction to Computer Vision</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#demo">Interactive Demo</a></li>
+            <li><a href="#modelTrainingExplanation">Model Training</a></li>
+            <li><a href="#technicalWalkthrough">Technical Walkthrough</a></li>
+            <li><a href="#otherTechniques">Other Techniques</a></li>
+            <li><a href="#applications">Applications</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section id="introduction">
+        <h2>Welcome to the World of Computer Vision</h2>
+        <p>Computer vision is a cutting-edge area of artificial intelligence where machines are taught to interpret and understand the visual world. By extracting and processing data from visual sources—images and videos—computer vision systems mimic human visual perception to perform complex tasks like identifying objects, tracking movements, and analyzing scenes.</p>
+        <p>The surge of interest and advancements in computer vision is primarily driven by the increasing capabilities of neural networks, particularly deep learning models, which have dramatically improved the accuracy and efficiency of visual processing. This transformative technology is now ubiquitous, powering applications from automated surveillance systems to real-time video analysis and beyond.</p>
+    </section>
+
+    <section id="demo">
+        <h2>Interactive Pose Classification Demo</h2>
+        <p>This demo lets you interact with a basic computer vision model that uses a neural network to classify human poses. Here’s how it works:</p>
+        <ol>
+            <li><strong>Labeling:</strong> You will input a label for your pose, and the system will record data associated with it.</li>
+            <li><strong>Training:</strong> The neural network will use the recorded data to learn and recognize these poses.</li>
+            <li><strong>Classification:</strong> After training, the model will attempt to classify new poses in real-time as you perform them in front of the webcam.</li>
+        </ol>
+        <p>This process illustrates three key phases of machine learning: data collection, model training, and real-time inference.</p>
+        <div id="poseClassificationDemo">
+            <h3>Interactive Demo: Classify Your Pose!</h3>
+            <p>Label your poses, train a model on your labeled data, and see how well it performs in classifying new poses based on what it learned.</p>
+            <div id="poseInputs">
+                <div class="poseInput">
+                    <input type="text" id="pose1" placeholder="Enter label for Pose 1">
+                    <button id="startCollecting1" onclick="startCollecting(1)">Record Pose 1</button>
+                </div>
+                <div class="poseInput">
+                    <input type="text" id="pose2" placeholder="Enter label for Pose 2">
+                    <button id="startCollecting2" onclick="startCollecting(2)">Record Pose 2</button>
+                </div>
+            </div>
+            <button id="addPose">Add Pose</button>
+            <button id="removePose">Remove Pose</button>
+            <button id="trainModel">Train Model</button>
+            <div id="sketch-holder"></div>
+        </div>
+    </section>
+
+    <section id="modelTrainingExplanation">
+        <h2>Understanding Model Training Feedback</h2>
+        <p>When you train a machine learning model, the system provides real-time feedback that helps you understand how well the training is progressing. Here’s what the feedback means:</p>
+        
+        <h3>Training Performance Graph</h3>
+        <p>The graph labeled 'Training Performance' shows the model's loss over each epoch of training. An epoch is one complete presentation of the data set to be learned to a learning machine. The 'loss' represents a number indicating how well the model's predictions match the actual data. Ideally, you want this number to decrease over time, indicating the model is learning correctly.</p>
+        
+        <h3>Model Summary</h3>
+        <p>The 'Model Summary' provides details about the architecture of the neural network, including:</p>
+        <ul>
+            <li><strong>Layer Name:</strong> Indicates the type and sequence of layers in the model.</li>
+            <li><strong>Output Shape:</strong> Shows the shape of the output from each layer, which helps in understanding the data transformation through the network.</li>
+            <li><strong># Of Params:</strong> Refers to the number of parameters (weights and biases) in each layer that are learned during training.</li>
+            <li><strong>Trainable:</strong> Tells whether the parameters in each layer are trainable or fixed.</li>
+        </ul>
+        <p>Understanding these components helps in diagnosing the model's learning process and in making adjustments if needed to improve training outcomes.</p>
+    </section>
+
+    <section id="technicalWalkthrough">
+        <h2>Technical Walkthrough of Image Processing</h2>
+        <p>Understand the journey of an image from pixels to a classified data set through our detailed tutorials and interactive visualizations.</p>
+        <p>planned: four short videos?</p>
+        <section id="pixelData">
+            <h3>Step 1: Pixel Data Interpretation</h3>
+            <p>Understand how an image is composed of pixels, each with its own color values, and how these pixels are processed to detect features.</p>
+            <div id="pixelDataDemo">[Video Placeholder]</div>
+        </section>
+    
+        <section id="edgeDetection">
+            <h3>Step 2: Edge Detection</h3>
+            <p>Learn about the techniques used to identify edges in images, which are crucial for outlining human figures in pose estimation.</p>
+            <div id="edgeDetectionDemo">[Video Placeholder]</div>
+        </section>
+    
+        <section id="featureExtraction">
+            <h3>Step 3: Feature Extraction</h3>
+            <p>Explore how specific features like joints and extremities are extracted from an image using machine learning models.</p>
+            <div id="featureExtractionDemo">[Video Placeholder]</div>
+        </section>
+    
+        <section id="poseClassification">
+            <h3>Step 4: Pose Classification and Analysis</h3>
+            <p>See how extracted features are used to classify and analyze human poses, and how this information is used in various applications.</p>
+            <div id="poseClassificationDemo">[Video Placeholder]</div>
+        </section>
+    
+        <!-- Interactive Visualizations -->
+        <div id="interactiveVisualizations">
+            <h3>Interactive Visualizations</h3>
+            <p>Engage with our interactive tools to visualize the step-by-step process of image analysis:</p>
+            <p>add some sore of visualization here?</p>
+            <!-- <ul>
+                <li><a href="#pixelDataDemo">Pixel Interpretation Visualization</a></li>
+                <li><a href="#edgeDetectionDemo">Edge Detection Visualization</a></li>
+                <li><a href="#featureExtractionDemo">Feature Extraction Visualization</a></li>
+                <li><a href="#classificationDemo">Classification Process Visualization</a></li>
+            </ul> -->
+        </div>
+    </section>
+    
+
+    <section id="otherTechniques">
+        <h2>Other Computer Vision Techniques</h2>
+        <p>While our website focuses on certain key applications of computer vision, the field encompasses a much broader range of techniques and applications. Beyond object recognition and classification, computer vision extends into dynamic and complex analyses that enhance our interaction with digital media. Here are some notable examples:</p>
+        <ul>
+            <li><strong>Object Detection:</strong> This technique involves identifying and locating objects within an image or video. It is fundamental for applications such as autonomous driving, where vehicles need to recognize and react to pedestrians, other vehicles, and obstacles in real time.</li>
+            <li><strong>Facial Recognition:</strong> Used in security and authentication systems, facial recognition technology maps facial features from an image or video and compares them with a database of known faces. This technology is widely used in devices for user authentication and in surveillance systems.</li>
+            <li><strong>Video Motion Analysis:</strong> This technique applies computer vision to estimate the velocity of moving objects in a video, or even the camera's movement, providing critical data for applications from sports analytics to traffic management.</li>
+            <li><strong>Image Segmentation:</strong> Algorithms divide images into multiple segments to simplify or change the representation of an image, making it more meaningful for specific analyses. This is crucial in medical imaging where precise anatomical structures need to be distinguished.</li>
+            <li><strong>Scene Reconstruction:</strong> Often used in virtual reality (VR) and architectural design, this method constructs a three-dimensional model of a scene from a series of photographs or video frames, offering immersive experiences and detailed environmental reconstructions.</li>
+            <li><strong>Image Restoration:</strong> This technique cleans up visual media by removing noise or distortions such as blurs and scratches, often utilizing machine learning-based filters to enhance the clarity and usability of old or degraded images.</li>
+        </ul>
+        <p>Each of these techniques showcases how computer vision is not just about recognizing or classifying objects but about deepening our understanding and interaction with visual data through sophisticated analytical tools.</p>
+    </section>
+    
+    
+    
+
+    <section id="applications">
+        <h2>Applications of Computer Vision</h2>
+        <p>Computer vision is not just a field of study; it's a transformative force across diverse industries, dramatically enhancing efficiency, accuracy, and capability. Here's how:</p>
+        <ul>
+            <li><strong>Healthcare:</strong> In healthcare, computer vision automates and enhances diagnostics, enabling more precise imaging analyses and continuous patient monitoring, thereby improving outcomes and expanding healthcare accessibility.</li>
+            <li><strong>Automotive:</strong> The automotive industry leverages computer vision to pioneer the development of autonomous vehicles. By interpreting environmental data, these technologies are making self-driving cars safer and more efficient, significantly reducing human error on the roads.</li>
+            <li><strong>Retail:</strong> In retail, computer vision transforms how businesses interact with customers through innovative solutions like interactive advertisements and enhanced inventory management. These advancements not only streamline operations but also craft personalized shopping experiences that engage consumers effectively.</li>
+        </ul>
+        <p>This integration of computer vision into everyday applications showcases its potential to not only streamline but also revolutionize the way industries operate, paving the way for smarter and more intuitive technology solutions.</p>
+    </section>
+
+    <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>While recent advancements in computer vision have been remarkable, the field remains far from fully mastered. Nonetheless, numerous healthcare organizations and businesses have already successfully implemented computer vision systems, particularly those driven by Convolutional Neural Networks (CNNs), to address practical challenges. The integration of computer vision into real-world applications continues to expand, indicating that this momentum will sustain well into the future.</p>
+    </section>
+    
+    
+
+    <footer>
+        <p>Copyright © 2024. All Rights Reserved.</p>
+    </footer>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
