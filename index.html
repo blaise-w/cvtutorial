@@ -83,28 +83,29 @@
         <p>Understand the journey of an image from pixels to a classified data set through our detailed tutorials and interactive visualizations.</p>
         <p>planned: four short videos?</p>
         <section id="pixelData">
-            <h3>Step 1: Pixel Data Interpretation</h3>
-            <p>Understand how an image is composed of pixels, each with its own color values, and how these pixels are processed to detect features.</p>
+            <h3>Step 1: Video Capture and Pose Detection</h3>
+            <p>First, the system captures video input from the webcam. It then uses the PoseNet model to detect human poses in real-time. PoseNet identifies key points on the human body, such as elbows, knees, and ankles, and returns their coordinates.</p>
             <div id="pixelDataDemo">[Video Placeholder]</div>
         </section>
-    
+        
         <section id="edgeDetection">
-            <h3>Step 2: Edge Detection</h3>
-            <p>Learn about the techniques used to identify edges in images, which are crucial for outlining human figures in pose estimation.</p>
+            <h3>Step 2: Data Collection</h3>
+            <p>Once PoseNet detects the key points, the coordinates of these points are recorded. During the data collection phase, you label each pose, and the system records the labeled data for 10 seconds. This data is used to train the neural network.</p>
             <div id="edgeDetectionDemo">[Video Placeholder]</div>
         </section>
-    
+        
         <section id="featureExtraction">
-            <h3>Step 3: Feature Extraction</h3>
-            <p>Explore how specific features like joints and extremities are extracted from an image using machine learning models.</p>
+            <h3>Step 3: Training the Neural Network</h3>
+            <p>The recorded data, consisting of labeled key point coordinates, is used to train a neural network. The training process involves adjusting the network's weights to minimize the difference between predicted and actual pose labels. This step is crucial for the network to learn and recognize different poses accurately.</p>
             <div id="featureExtractionDemo">[Video Placeholder]</div>
         </section>
-    
+        
         <section id="poseClassification">
-            <h3>Step 4: Pose Classification and Analysis</h3>
-            <p>See how extracted features are used to classify and analyze human poses, and how this information is used in various applications.</p>
+            <h3>Step 4: Real-Time Pose Classification</h3>
+            <p>After training, the neural network can classify new poses in real-time. As you perform a pose in front of the webcam, PoseNet detects the key points, and the trained neural network predicts the pose label based on the coordinates of these key points.</p>
             <div id="poseClassificationDemo">[Video Placeholder]</div>
         </section>
+        
     
         <!-- Interactive Visualizations -->
         <div id="interactiveVisualizations">
