@@ -7,7 +7,6 @@ let state = 'waiting';
 let poseLabel = '';
 let poseCount = 2;
 
-
 function setup() {
     let canvas = createCanvas(640, 480);
     canvas.parent('sketch-holder');
@@ -86,7 +85,6 @@ function drawSkeleton() {
     }
 }
 
-
 function setupButtons() {
     document.getElementById('addPose').addEventListener('click', addPose);
     document.getElementById('removePose').addEventListener('click', removePose);
@@ -99,11 +97,17 @@ function startCollecting(poseNumber) {
     const poseInput = document.getElementById(`pose${poseNumber}`);
     poseLabel = poseInput.value;
     state = 'collecting';
-    console.log(`Starting data collection for label: ${poseLabel}`);
+    updateStatusMessage(`Recording data for: ${poseLabel}`, 'recording');
     setTimeout(() => {
         state = 'waiting';
-        console.log(`Stopped collecting data for label: ${poseLabel}`);
+        updateStatusMessage(`Finished recording for: ${poseLabel}. You can start recording the next pose.`, 'waiting');
     }, 10000); // Collect data for 10 seconds
+}
+
+function updateStatusMessage(message, stateClass) {
+    const statusMessage = document.getElementById('statusMessage');
+    statusMessage.textContent = message;
+    statusMessage.className = stateClass; // Apply the appropriate CSS class based on the state
 }
 
 function addPose() {
@@ -132,10 +136,10 @@ function removePose() {
 }
 
 function trainModel() {
-    console.log('Starting model training...');
+    updateStatusMessage('Starting model training...', 'training');
     brain.normalizeData();
     brain.train({epochs: 50}, () => {
-        console.log('Model trained.');
+        updateStatusMessage('Model trained. Ready to classify poses.', 'trained');
         classifyPose();
     });
 }
@@ -152,7 +156,12 @@ function classifyPose() {
 function gotResult(error, results) {
     if (results && results.length > 0 && results[0].confidence > 0.75) {
         poseLabel = results[0].label.toUpperCase();
-        console.log(`Pose classified as ${poseLabel} with confidence ${results[0].confidence}`);
+        updateClassificationResult(poseLabel, results[0].confidence);
     }
     setTimeout(classifyPose, 100);
+}
+
+function updateClassificationResult(label, confidence) {
+    const classificationResult = document.getElementById('classificationResult');
+    classificationResult.textContent = `Pose: ${label}, Confidence: ${confidence.toFixed(2)}`;
 }

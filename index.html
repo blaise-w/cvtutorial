@@ -15,9 +15,9 @@
     <nav>
         <ul>
             <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#technicalWalkthrough">Technical Walkthrough</a></li>
             <li><a href="#demo">Interactive Demo</a></li>
             <li><a href="#modelTrainingExplanation">Model Training</a></li>
-            <li><a href="#technicalWalkthrough">Technical Walkthrough</a></li>
             <li><a href="#otherTechniques">Other Techniques</a></li>
             <li><a href="#applications">Applications</a></li>
             <li><a href="#conclusion">Conclusion</a></li>
@@ -27,18 +27,55 @@
 <main>
     <section id="introduction">
         <h2>Welcome to the World of Computer Vision</h2>
+        <p>Welcome! This walkthrough is specially designed for late high schoolers, early college students, or anyone new to computer science who is eager to learn!</p>
         <p>Computer vision is a cutting-edge area of artificial intelligence where machines are taught to interpret and understand the visual world. By extracting and processing data from visual sources—images and videos—computer vision systems mimic human visual perception to perform complex tasks like identifying objects, tracking movements, and analyzing scenes.</p>
         <p>The surge of interest and advancements in computer vision is primarily driven by the increasing capabilities of neural networks, particularly deep learning models, which have dramatically improved the accuracy and efficiency of visual processing. This transformative technology is now ubiquitous, powering applications from automated surveillance systems to real-time video analysis and beyond.</p>
+        <p>In this demonstration, we will take a closer look at one specific application of computer vision: pose recognition. Pose recognition involves detecting and analyzing human body positions in real-time, enabling machines to understand and respond to human movements. Let's walk through the process!</p>
     </section>
+
+    <section id="technicalWalkthrough">
+        <h2>Technical Walkthrough of Image Processing</h2>
+        <p>Understand the journey of an image from pixels to a classified data set through a set of quick tutorials.</p>
+        <section id="pixelData">
+            <h3>Step 1: Video Capture and Pose Detection</h3>
+            <p>First, the system captures video input from the webcam. It then uses the PoseNet model to detect human poses in real-time. PoseNet identifies key points on the human body, such as elbows, knees, and ankles, and returns their coordinates.</p>
+            <video id="pixelDataDemo" controls>
+                <source src="ymcaintro.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+        
+        <section id="edgeDetection">
+            <h3>Step 2: Data Collection</h3>
+            <p>Once PoseNet detects the key points, the coordinates of these points are recorded. During the data collection phase, you label each pose, and the system records the labeled data for 10 seconds. This data is used to train the neural network.</p>
+            <h3>Step 3: Training the Neural Network</h3>
+            <p>The recorded data, consisting of labeled key point coordinates, is used to train a neural network. The training process involves adjusting the network's weights to minimize the difference between predicted and actual pose labels. This step is crucial for the network to learn and recognize different poses accurately.</p>
+            <video id="featureExtractionDemo" controls>
+                <source src="ymcatutorial.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+        
+        <section id="poseClassification">
+            <h3>Step 4: Real-Time Pose Classification</h3>
+            <p>After training, the neural network can classify new poses in real-time. As you perform a pose in front of the webcam, PoseNet detects the key points, and the trained neural network predicts the pose label based on the coordinates of these key points.</p>
+            <video id="poseClassificationDemo" controls>
+                <source src="ymca.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+    </section>
+    
+    
 
     <section id="demo">
         <h2>Interactive Pose Classification Demo</h2>
         <p>This demo lets you interact with a basic computer vision model that uses a neural network to classify human poses. Here’s how it works:</p>
-        <ol>
+        <ul style="list-style-type: none;">
             <li><strong>Labeling:</strong> You will input a label for your pose, and the system will record data associated with it.</li>
             <li><strong>Training:</strong> The neural network will use the recorded data to learn and recognize these poses.</li>
             <li><strong>Classification:</strong> After training, the model will attempt to classify new poses in real-time as you perform them in front of the webcam.</li>
-        </ol>
+        </ul>
         <p>This process illustrates three key phases of machine learning: data collection, model training, and real-time inference.</p>
         <div id="poseClassificationDemo">
             <h3>Interactive Demo: Classify Your Pose!</h3>
@@ -57,6 +94,8 @@
             <button id="removePose">Remove Pose</button>
             <button id="trainModel">Train Model</button>
             <div id="sketch-holder"></div>
+            <div id="statusMessage"></div>
+            <div id="classificationResult"></div> 
         </div>
     </section>
 
@@ -69,7 +108,7 @@
         
         <h3>Model Summary</h3>
         <p>The 'Model Summary' provides details about the architecture of the neural network, including:</p>
-        <ul>
+        <ul style="list-style-type: none;">
             <li><strong>Layer Name:</strong> Indicates the type and sequence of layers in the model.</li>
             <li><strong>Output Shape:</strong> Shows the shape of the output from each layer, which helps in understanding the data transformation through the network.</li>
             <li><strong># Of Params:</strong> Refers to the number of parameters (weights and biases) in each layer that are learned during training.</li>
@@ -78,47 +117,12 @@
         <p>Understanding these components helps in diagnosing the model's learning process and in making adjustments if needed to improve training outcomes.</p>
     </section>
 
-    <section id="technicalWalkthrough">
-        <h2>Technical Walkthrough of Image Processing</h2>
-        <p>Understand the journey of an image from pixels to a classified data set through our detailed tutorials and interactive visualizations.</p>
-        <p>planned: four short videos?</p>
-        <section id="pixelData">
-            <h3>Step 1: Video Capture and Pose Detection</h3>
-            <p>First, the system captures video input from the webcam. It then uses the PoseNet model to detect human poses in real-time. PoseNet identifies key points on the human body, such as elbows, knees, and ankles, and returns their coordinates.</p>
-            <div id="pixelDataDemo">[Video Placeholder]</div>
-        </section>
-        
-        <section id="edgeDetection">
-            <h3>Step 2: Data Collection</h3>
-            <p>Once PoseNet detects the key points, the coordinates of these points are recorded. During the data collection phase, you label each pose, and the system records the labeled data for 10 seconds. This data is used to train the neural network.</p>
-            <div id="edgeDetectionDemo">[Video Placeholder]</div>
-        </section>
-        
-        <section id="featureExtraction">
-            <h3>Step 3: Training the Neural Network</h3>
-            <p>The recorded data, consisting of labeled key point coordinates, is used to train a neural network. The training process involves adjusting the network's weights to minimize the difference between predicted and actual pose labels. This step is crucial for the network to learn and recognize different poses accurately.</p>
-            <div id="featureExtractionDemo">[Video Placeholder]</div>
-        </section>
-        
-        <section id="poseClassification">
-            <h3>Step 4: Real-Time Pose Classification</h3>
-            <p>After training, the neural network can classify new poses in real-time. As you perform a pose in front of the webcam, PoseNet detects the key points, and the trained neural network predicts the pose label based on the coordinates of these key points.</p>
-            <div id="poseClassificationDemo">[Video Placeholder]</div>
-        </section>
-        
-    
-        <div id="interactiveVisualizations">
-            <h3>Interactive Visualizations</h3>
-            <p>Engage with our interactive tools to visualize the step-by-step process of image analysis:</p>
-            <p>add some sort of visualization here?</p>
-        </div>
-    </section>
     
 
     <section id="otherTechniques">
         <h2>Other Computer Vision Techniques</h2>
         <p>While our website focuses on certain key applications of computer vision, the field encompasses a much broader range of techniques and applications. Beyond object recognition and classification, computer vision extends into dynamic and complex analyses that enhance our interaction with digital media. Here are some notable examples:</p>
-        <ul>
+        <ul style="list-style-type: none;">
             <li><strong>Object Detection:</strong> This technique involves identifying and locating objects within an image or video. It is fundamental for applications such as autonomous driving, where vehicles need to recognize and react to pedestrians, other vehicles, and obstacles in real time.</li>
             <li><strong>Facial Recognition:</strong> Used in security and authentication systems, facial recognition technology maps facial features from an image or video and compares them with a database of known faces. This technology is widely used in devices for user authentication and in surveillance systems.</li>
             <li><strong>Video Motion Analysis:</strong> This technique applies computer vision to estimate the velocity of moving objects in a video, or even the camera's movement, providing critical data for applications from sports analytics to traffic management.</li>
@@ -135,7 +139,7 @@
     <section id="applications">
         <h2>Applications of Computer Vision</h2>
         <p>Computer vision is not just a field of study; it's a transformative force across diverse industries, dramatically enhancing efficiency, accuracy, and capability. Here's how:</p>
-        <ul>
+        <ul style="list-style-type: none;">
             <li><strong>Healthcare:</strong> In healthcare, computer vision automates and enhances diagnostics, enabling more precise imaging analyses and continuous patient monitoring, thereby improving outcomes and expanding healthcare accessibility.</li>
             <li><strong>Automotive:</strong> The automotive industry leverages computer vision to pioneer the development of autonomous vehicles. By interpreting environmental data, these technologies are making self-driving cars safer and more efficient, significantly reducing human error on the roads.</li>
             <li><strong>Retail:</strong> In retail, computer vision transforms how businesses interact with customers through innovative solutions like interactive advertisements and enhanced inventory management. These advancements not only streamline operations but also craft personalized shopping experiences that engage consumers effectively.</li>
@@ -146,7 +150,18 @@
     <section id="conclusion">
         <h2>Conclusion</h2>
         <p>While recent advancements in computer vision have been remarkable, the field remains far from fully mastered. Nonetheless, numerous healthcare organizations and businesses have already successfully implemented computer vision systems, particularly those driven by Convolutional Neural Networks (CNNs), to address practical challenges. The integration of computer vision into real-world applications continues to expand, indicating that this momentum will sustain well into the future.</p>
+        <p>In this tutorial, you have learned the basics of computer vision and its significance in the modern world. You walked through the process of capturing video input, detecting human poses using the PoseNet model, collecting data, training a neural network, and performing real-time pose classification. By engaging with the interactive demo, you experienced firsthand how to label poses, collect data, train a model, and classify poses in real-time. These fundamental skills provide a solid foundation for further exploration and application of computer vision techniques. I hope you build on what you have learned with your own projects in the future, whether they focus on computer vision, neural networks, or computer science as a whole!</p>
+        <p><strong>References:</strong></p>
+        <ul style="list-style-type: none;">
+            <li>ml5.js library: <a href="https://ml5js.org/">ml5js.org</a></li>
+            <li>p5.js library: <a href="https://p5js.org/">p5js.org</a></li>
+            <li>PoseNet model: <a href="https://github.com/tensorflow/tfjs-models/tree/master/posenet">TensorFlow.js</a></li>
+            <li>YMCA by Village People: <a href="https://www.youtube.com/watch?v=CS9OO0S5w2k">YouTube</a></li>
+            <li>Teachable Machine: <a href="https://teachablemachine.withgoogle.com/">Teachable Machine</a></li>
+        </ul>
+    
     </section>
+    
     
     
 
